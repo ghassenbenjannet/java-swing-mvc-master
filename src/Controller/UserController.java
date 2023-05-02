@@ -1,9 +1,7 @@
 package Controller;
 
-import Model.Database;
-import Model.User;
-import View.Form;
-import View.UserDetails;
+import Model.*;
+import View.*;
 
 import javax.swing.*;
 import java.io.File;
@@ -46,8 +44,14 @@ public class UserController {
                         JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-            this.database.addUser(new User(firstname, lastname, email, password, role));
+            switch(role){
+                case 0: 
+                this.database.addUser(new Collaborateur(firstname, lastname, email, password));
+                break;
+                case 1:
+                this.database.addUser(new Admin(firstname, lastname, email, password));
+                break;
+            }
             this.database.saveUser(new File(databaseFile));
             this.form.reset(true);
         });

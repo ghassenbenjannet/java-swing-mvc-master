@@ -1,6 +1,6 @@
 package Service;
 
-import Model.User;
+import Model.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -36,6 +36,7 @@ public class AuthenticationService {
      */
     private static List<User> readUsersFromDatabase() {
         List<User> users = new ArrayList<>();
+        User user;
         try (BufferedReader reader = new BufferedReader(new FileReader(DATABASE_PATH))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -45,7 +46,11 @@ public class AuthenticationService {
                 String email = parts[2].trim();
                 String password = parts[3].trim();
                 int role = Integer.parseInt(parts[4].trim());
-                User user = new User(firstname, lastname, email, password, role);
+                if (role == 1 )
+                     user = new Admin(firstname, lastname, email, password);
+                else 
+                     user = new Collaborateur(firstname, lastname, email, password);
+
                 users.add(user);
             }
         } catch (IOException e) {
