@@ -1,44 +1,44 @@
 package Controller;
 
+import Model.User;
+import Service.AuthenticationService;
 import View.*;
-import View.MainFrame;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class ConnexionController {
 
-    private ConnexionFrame connexionFrame;
+    private AuthenticationService authService;
     private LoginForm loginForm;
 
-    public ConnexionController(ConnexionFrame connexionFrame, LoginForm loginForm) {
-        this.connexionFrame = connexionFrame;
+    public ConnexionController(AuthenticationService authService, LoginForm loginForm) {
+        this.authService = authService;
         this.loginForm = loginForm;
 
-        loginForm.login(new LoginListener());
-        loginForm.cancel(new CancelListener());
-    }
-
-    private class LoginListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+        // set up event listeners for login and cancel buttons
+        loginForm.login(e -> {
             String username = loginForm.getUsername();
             String password = loginForm.getPassword();
-
-            if (username.equals("admin") && password.equals("admin")) {
-                MainFrame mainFrame = new MainFrame();
-                connexionFrame.dispose();
+            User user = AuthenticationService.authenticate(username, password);
+            if (user != null) {
+                if (user.getRole() == 1) {
+                    // if the user is an admin, switch to the main frame view
+                    JOptionPane.showMessageDialog(loginForm, "Vous êtes connecté en tant qu'administrateur.");
+                    MainFrame adminFrame = new MainFrame();
+                    loginForm.reset(true);
+                    adminFrame.setVisible(true);
+                    loginForm.setVisible(false);
+                } else {
+                    // if the user is a regular user, switch to the user details view
+                    JOptionPane.showMessageDialog(loginForm, "Vous êtes connecté en tant que collaborateur.");
+                }
             } else {
-                JOptionPane.showMessageDialog(connexionFrame, "Nom d'utilisateur ou mot de passe incorrect.");
-                loginForm.reset(true);
+                // if authentication fails, show an error message
+                JOptionPane.showMessageDialog(loginForm, "Nom d'utilisateur ou mot de passe incorrect.");
+                loginForm.reset(false);
             }
-        }
-    }
+        });
 
-    private class CancelListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            loginForm.reset(true);
-        }
+        loginForm.cancel(e -> System.exit(0));
     }
 }

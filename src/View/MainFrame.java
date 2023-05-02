@@ -11,7 +11,7 @@ public class MainFrame extends JFrame {
     private CardLayout cardLayout;
 
     public MainFrame() {
-        super("Java Swing MVC");
+        super("Gestion utilisateurs");
         cardLayout = new CardLayout();
         Form form = new Form();
         UserDetails userDetails = new UserDetails();
