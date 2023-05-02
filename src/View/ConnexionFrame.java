@@ -58,9 +58,8 @@ public class ConnexionFrame extends JFrame {
 
         // adds view to card layout with unique constraints
         add(form, "form");
-        //add(userDetails, "user details");
         // switch view according to its constraints on click
-        form.login(e -> cardLayout.show(ConnexionFrame.this.getContentPane(), "main frame"));
+        form.login(e -> cardLayout.show(ConnexionFrame.this.getContentPane(), "index"));
 
         // icon for our application
         ImageIcon imageIcon = new ImageIcon("src/assets/appicon.png");

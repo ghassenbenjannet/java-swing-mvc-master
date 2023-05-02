@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AuthenticationService {
 
-    private static final String DATABASE_PATH = "src/data/database.txt";
+    private static final String DATABASE_PATH = "src/data/data_users.txt";
 
     /**
      * Authenticate the user with the given username and password.

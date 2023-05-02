@@ -67,6 +67,25 @@ public abstract class  User {
     public String toString() {
         return String.format("%s,%s,%s,%s,%s", this.firstname, this.lastname, this.email, this.password, this.role == 0 ? "Collaborateur" : "Admin");
     }
+
+    public static User fromString(String line) {
+        String[] parts = line.split(",");
+        String firstname = parts[0];
+        String lastname = parts[1];
+        String email = parts[2];
+        String password = parts[3];
+        int role = Integer.parseInt(parts[4]);
+        
+        if (role == 1) {
+            return new Admin(firstname, lastname, email, password);
+        } else if (role == 2) {
+            return new Collaborateur(firstname, lastname, email, password);
+        } else {
+            // role is not valid, return null or throw an exception
+            return null;
+        }
+    }
+    
     
     
 

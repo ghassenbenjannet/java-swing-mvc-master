@@ -46,4 +46,51 @@ public class Database {
         }
         return null;
     }
+
+    // creates a file for the specified user
+public void createFileForUser(User user) {
+    try {
+        File file = new File(user.getEmail() + ".txt");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+    // saves ticket to user's file and data_tickets.txt
+    public void saveTicket(Ticket ticket) {
+        try {
+            // save to user's file
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(ticket.getCreatedBy().getEmail() + ".txt", true));
+            bufferedWriter.write(ticket.toString());
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+            // save to data_tickets.txt
+            bufferedWriter = new BufferedWriter(new FileWriter("data_tickets.txt", true));
+            bufferedWriter.write(ticket.toString());
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // reads tickets from the specified file and returns a list of tickets
+    public ArrayList<Ticket> getTickets(String filename) {
+        ArrayList<Ticket> ticketArrayList = new ArrayList<>();
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                Ticket ticket = Ticket.fromString(line);
+                ticketArrayList.add(ticket);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ticketArrayList;
+    }
 }

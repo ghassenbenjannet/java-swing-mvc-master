@@ -24,13 +24,17 @@ public class ConnexionController {
                 if (user.getRole() == 1) {
                     // if the user is an admin, switch to the main frame view
                     JOptionPane.showMessageDialog(loginForm, "Vous êtes connecté en tant qu'administrateur.");
-                    MainFrame adminFrame = new MainFrame();
+                    IndexAdmin adminFrame = new IndexAdmin();
                     loginForm.reset(true);
                     adminFrame.setVisible(true);
                     loginForm.setVisible(false);
                 } else {
                     // if the user is a regular user, switch to the user details view
                     JOptionPane.showMessageDialog(loginForm, "Vous êtes connecté en tant que collaborateur.");
+                    IndexCollab collabFrame = new IndexCollab();
+                    loginForm.reset(true);
+                    collabFrame.setVisible(true);
+                    loginForm.setVisible(false);
                 }
             } else {
                 // if authentication fails, show an error message

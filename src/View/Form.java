@@ -14,6 +14,7 @@ public class Form extends JPanel {
 
     private JButton addButton;
     private JButton viewButton;
+    private JButton backButton;
 
     public Form() {
 
@@ -40,6 +41,10 @@ public class Form extends JPanel {
         Insets fieldsInset = new Insets(0, 0, 10, 0);
         // space between buttons
         Insets buttonInset = new Insets(20,0,0,0);
+
+        
+
+
 
         // uses Grid Bag Layout
         setLayout(new GridBagLayout());
@@ -150,5 +155,10 @@ public class Form extends JPanel {
             firstnameField.setText("");
             lastnameField.setText("");
         }
+    }
+
+    // event listener for back button
+    public void backButton(ActionListener actionListener) {
+        backButton.addActionListener(actionListener);
     }
 }

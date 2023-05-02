@@ -8,7 +8,7 @@ import java.io.File;
 
 public class UserController {
     // database file
-    private String databaseFile = "src\\data\\database.txt";
+    private String databaseFile = "src\\data\\data_users.txt";
     private Database database;
     private Form form;
     private UserDetails userDetails;

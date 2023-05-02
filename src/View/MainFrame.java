@@ -13,6 +13,7 @@ public class MainFrame extends JFrame {
     public MainFrame() {
         super("Gestion utilisateurs");
         cardLayout = new CardLayout();
+        
         Form form = new Form();
         UserDetails userDetails = new UserDetails();
         // sets our layout as a card layout
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame {
         // switch view according to its constraints on click
         form.viewUsers(e -> cardLayout.show(MainFrame.this.getContentPane(), "user details"));
         userDetails.backButton(e -> cardLayout.show(MainFrame.this.getContentPane(), "form"));
+        
 
         // icon for our application
         ImageIcon imageIcon = new ImageIcon("src/assets/appicon.png");
