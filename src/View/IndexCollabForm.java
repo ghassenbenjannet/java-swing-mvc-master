@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 public class IndexCollabForm extends JPanel{
 
     private JButton mesTicketsButton;
-    private JButton traetTicketsButton;
     private JButton statistiqueButton;
     private JButton creerTicketButton;
 
@@ -16,7 +15,6 @@ public class IndexCollabForm extends JPanel{
         // initialize buttons
         mesTicketsButton = new JButton("Suivre mes Tickets");
         creerTicketButton = new JButton("Créer un Ticket");
-        traetTicketsButton = new JButton("Traitement des Tickets");
         statistiqueButton = new JButton("Statistique");
 
         // space between buttons
@@ -37,15 +35,11 @@ public class IndexCollabForm extends JPanel{
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
 
-        add(traetTicketsButton, gridBagConstraints);
-
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
 
         add(statistiqueButton, gridBagConstraints);
 
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
 
         add(creerTicketButton, gridBagConstraints);
     }
@@ -53,10 +47,6 @@ public class IndexCollabForm extends JPanel{
     // listeners for each button
     public void mesTicketsListener(ActionListener actionListener) {
         mesTicketsButton.addActionListener(actionListener);
-    }
-
-    public void treatTicketsListener(ActionListener actionListener) {
-        traetTicketsButton.addActionListener(actionListener);
     }
 
     public void statistiqueListener(ActionListener actionListener) {
