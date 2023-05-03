@@ -19,9 +19,6 @@ public IndexCollab() {
     new CollabController(form);
     add(form, "form");
 
-    // Switch to the user management view when clicked
-    //form.gestionUtilisateursListener(e -> cardLayout.show(IndexAdmin.this.getContentPane(), "utilisateursForm"));
-
     // Set the icon for the application
     ImageIcon imageIcon = new ImageIcon("src/assets/appicon.png");
     setIconImage(imageIcon.getImage());

@@ -9,11 +9,13 @@ public class IndexCollabForm extends JPanel{
     private JButton mesTicketsButton;
     private JButton traetTicketsButton;
     private JButton statistiqueButton;
+    private JButton creerTicketButton;
 
     public IndexCollabForm() {
 
         // initialize buttons
-        mesTicketsButton = new JButton("Mes Tickets");
+        mesTicketsButton = new JButton("Suivre mes Tickets");
+        creerTicketButton = new JButton("Créer un Ticket");
         traetTicketsButton = new JButton("Traitement des Tickets");
         statistiqueButton = new JButton("Statistique");
 
@@ -41,6 +43,11 @@ public class IndexCollabForm extends JPanel{
         gridBagConstraints.gridy = 2;
 
         add(statistiqueButton, gridBagConstraints);
+
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+
+        add(creerTicketButton, gridBagConstraints);
     }
 
     // listeners for each button
@@ -56,5 +63,8 @@ public class IndexCollabForm extends JPanel{
         statistiqueButton.addActionListener(actionListener);
     }
 
-     
+    public void creerTicketListener(ActionListener actionListener) {
+        creerTicketButton.addActionListener(actionListener);
+    }
+
 }
