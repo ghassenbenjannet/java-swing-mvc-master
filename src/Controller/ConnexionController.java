@@ -7,6 +7,7 @@ import View.*;
 import javax.swing.*;
 
 public class ConnexionController {
+    public static User currentUser;
 
     private AuthenticationService authService;
     private LoginForm loginForm;

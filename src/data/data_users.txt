@@ -1,4 +1,4 @@
-Ghassen, Ben Jannet, GGGGG@gmail.com, admin, 0
-Admin, Admin, admin, admin, 0
-Alenas, CHAOUI, Alena@gmail.com, Alenas, 0
-aaa, bbb, bbb, bbb, 1
+Ghassen, Ben Jannet, admin, admin, 1
+Admin, Admin, admin, admin, 1
+Alenas, CHAOUI, admin, Alenas, 1
+aaa, bbb, bbb, bbb, 0

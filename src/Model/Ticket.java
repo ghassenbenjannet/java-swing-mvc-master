@@ -7,20 +7,21 @@ public class Ticket {
     private User assignedTo;
     private String status;
 
-    public Ticket(String title, String description, User createdBy) {
+    public Ticket(String title, String description, User createdBy,User assignedTo ) {
         this.title = title;
         this.description = description;
         this.createdBy = createdBy;
-        this.status = "created";
+        this.status = "Created";
+        this.assignedTo = assignedTo;
+
     }
 
-    public void assignTo(User assignedTo) {
-        this.assignedTo = assignedTo;
-        this.status = "in progress";
+    public void trait() {
+        this.status = "In progress";
     }
 
     public void markAsTraited() {
-        this.status = "traited";
+        this.status = "Traited";
     }
 
     // getters and setters
@@ -30,7 +31,7 @@ public class Ticket {
     }
 
     public static Ticket fromString(String line) {
-        String[] parts = line.split(",");
+        String[] parts = line.split("/");
         String title = parts[0];
         String description = parts[1];
         User createdBy = User.fromString(parts[2]);
@@ -39,11 +40,11 @@ public class Ticket {
             assignedTo = User.fromString(parts[3]);
         }
         String status = parts[4];
-        Ticket ticket = new Ticket(title, description, createdBy);
+        Ticket ticket = new Ticket(title, description, createdBy , assignedTo);
         if (assignedTo != null) {
-            ticket.assignTo(assignedTo);
+            ticket.trait();
         }
-        if (status.equals("traited")) {
+        if (status.equals("Traited")) {
             ticket.markAsTraited();
         }
         return ticket;
@@ -57,5 +58,16 @@ public class Ticket {
         return createdBy ;
     }
 
+    public String getTitle() {
+        return title ;
+    }
+
+    public String getDescreption() {
+        return description ;
+    }
+
+    public String getStatus() {
+        return status ;
+    }
 
 }

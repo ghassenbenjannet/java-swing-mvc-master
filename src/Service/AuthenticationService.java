@@ -1,6 +1,7 @@
 package Service;
 
 import Model.*;
+import Controller.ConnexionController;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -23,6 +24,7 @@ public class AuthenticationService {
         List<User> users = readUsersFromDatabase();
         for (User user : users) {
             if (user.getEmail().equals(username) && user.getPassword().equals(password)) {
+                ConnexionController.currentUser= user;
                 return user;
             }
         }
@@ -34,7 +36,7 @@ public class AuthenticationService {
      *
      * @return the list of users
      */
-    private static List<User> readUsersFromDatabase() {
+    public static List<User> readUsersFromDatabase() {
         List<User> users = new ArrayList<>();
         User user;
         try (BufferedReader reader = new BufferedReader(new FileReader(DATABASE_PATH))) {
