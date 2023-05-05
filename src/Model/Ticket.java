@@ -27,7 +27,7 @@ public class Ticket {
     // getters and setters
 
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s", this.title, this.description, this.createdBy, this.assignedTo, this.status);
+        return String.format("%s/%s/%s/%s/%s", this.title, this.description, this.createdBy, this.assignedTo, this.status);
     }
 
     public static Ticket fromString(String line) {
@@ -68,6 +68,10 @@ public class Ticket {
 
     public String getStatus() {
         return status ;
+    }
+
+    public void setStatus(String s){
+        this.status = s;
     }
 
 }

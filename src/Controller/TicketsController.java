@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
@@ -10,7 +11,7 @@ import View.*;
 
 public class TicketsController {
     private CollabCreatTicketForm form;
-    private String databaseFile = "src\\data\\data_tickets.txt";
+    private String databaseFile = "src/data/data_tickets.txt";
     private Database database;
     
 
@@ -34,7 +35,11 @@ public class TicketsController {
                 return;
             }
             this.database.addTicket(new Ticket(title, descreption, createdBy, assignTo));
-            this.database.saveTicket(new File(databaseFile));
+            try {
+                this.database.saveTicket(new Ticket(title, descreption, createdBy, assignTo));
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
             this.form.reset(true);
         });
     }

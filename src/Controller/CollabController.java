@@ -11,8 +11,15 @@ public class CollabController {
             CollabCreatTicket adminFrame = new CollabCreatTicket();
             adminFrame.setVisible(true);
             indexCollab.setVisible(false);
-        
-});
+        });
+
+        indexCollab.mesTicketsListener(e -> {
+
+            ViewTickets Vframe = new ViewTickets(ConnexionController.currentUser);
+            Vframe.setVisible(true);
+            indexCollab.setVisible(false);
+
+        } );
         
 
 
