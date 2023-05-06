@@ -177,26 +177,25 @@ public class Database {
         try {
             // Lire toutes les lignes du fichier et stocker dans une liste de String
             File file = new File("/src/data/data_tickets.txt");
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            ArrayList<String> lines = new ArrayList<>();
-            String line = reader.readLine();
-            int row=1;
-            while (line != null) {
-                lines.add(line);
-                line = reader.readLine();
-                if (line == t){
-                    return row;
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                ArrayList<String> lines = new ArrayList<>();
+                String line = reader.readLine();
+                int row=1;
+                while (line != null) {
+                    lines.add(line);
+                    line = reader.readLine();
+                    if (line == t){
+                        return row;
+                    }
+                    row++;
                 }
-                row++;
+                reader.close();
             }
-            reader.close();}
-            catch(Exception e){
-                System.out.println(e.getMessage());
-            }
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
 
         return -1;
     }
-    
-    
-
 }
