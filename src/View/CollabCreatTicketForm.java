@@ -5,7 +5,6 @@ import Service.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CollabCreatTicketForm extends JPanel {
@@ -75,6 +74,7 @@ public class CollabCreatTicketForm extends JPanel {
     public void createTicket(ActionListener actionListener) {
         createTicketButton.addActionListener(actionListener);
     };
+    
 
     public String getTitle(){
         return titleField.getText();

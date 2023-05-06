@@ -118,7 +118,7 @@ public class Database {
     }
 
     // reads tickets from the specified file and returns a list of tickets
-    public ArrayList<Ticket> getTickets(String filename) {
+    public static ArrayList<Ticket> getTickets(String filename) {
         ArrayList<Ticket> ticketArrayList = new ArrayList<>();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filename));
@@ -133,4 +133,70 @@ public class Database {
         }
         return ticketArrayList;
     }
+
+    public void update(int rowIndex, Ticket ticket) {
+        // Récupérer le nom de fichier approprié pour le ticket en fonction du collaborateur
+        String filename = dataPath;
+        
+        if (ticket.getAssignTo() == null) {
+            filename += "data_tickets";
+        } else {
+            filename += ticket.getAssignTo().getLastname() + "_" + ticket.getAssignTo().getFirstname() + "_Tickets";
+        }
+        filename += ticketExtension;
+        System.out.println(filename);
+
+        try {
+            // Lire toutes les lignes du fichier et stocker dans une liste de String
+            File file = new File(filename);
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            ArrayList<String> lines = new ArrayList<>();
+            String line = reader.readLine();
+            while (line != null) {
+                lines.add(line);
+                line = reader.readLine();
+            }
+            reader.close();
+    
+            // Mettre à jour la ligne correspondant à l'index de la ligne sélectionnée avec la nouvelle valeur de ticket
+            String updatedLine = ticket.toString();
+            lines.set(rowIndex, updatedLine);
+    
+            // Écrire toutes les lignes dans le fichier
+            FileWriter writer = new FileWriter(file, false);
+            for (String newLine : lines) {
+                writer.write(newLine + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int findTicketRow(String t){
+        try {
+            // Lire toutes les lignes du fichier et stocker dans une liste de String
+            File file = new File("/src/data/data_tickets.txt");
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            ArrayList<String> lines = new ArrayList<>();
+            String line = reader.readLine();
+            int row=1;
+            while (line != null) {
+                lines.add(line);
+                line = reader.readLine();
+                if (line == t){
+                    return row;
+                }
+                row++;
+            }
+            reader.close();}
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }
+
+        return -1;
+    }
+    
+    
+
 }

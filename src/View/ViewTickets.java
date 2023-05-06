@@ -3,15 +3,9 @@ package View;
 import Model.*;
 import Controller.*;
 
-import javax.swing.AbstractAction;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JToolBar;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+
+import javax.swing.table.*;
 import javax.swing.table.TableColumn;
 
 import java.util.ArrayList;
@@ -84,8 +78,10 @@ public class ViewTickets extends JFrame {
                     Ticket ticket = tickets.get(rowIndex);
                     String tmp = ticket.toString();
                     ticket.setStatus(newState);
+                
                     db.UpdateTicketFile(dataPath +ticket.getAssignTo().getLastname() + "_" + ticket.getAssignTo().getFirstname() + "_Tickets"+ticketExtension, tmp, ticket.toString());
                     db.UpdateTicketFile(dataPath +"data_tickets"+ticketExtension, tmp, ticket.toString());
+                    db.update(rowIndex, ticket);
 
                 }
             }

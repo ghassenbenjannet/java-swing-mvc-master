@@ -21,5 +21,12 @@ public class AdminController {
                     indexAdmin.setVisible(false);
         });
 
+        indexAdmin.statistiqueListener(e -> {
+            Statistique Vframe = new Statistique(ConnexionController.currentUser);
+            Vframe.setVisible(true);
+            indexAdmin.setVisible(false);
+
+        } );
+
     }
 }

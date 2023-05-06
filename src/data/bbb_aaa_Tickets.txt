@@ -1,2 +1,2 @@
-test/test/aaa,bbb,bbb,bbb,Collaborateur/aaa,bbb,bbb,bbb,Collaborateur/Created
+test/test/aaa,bbb,bbb,bbb,Collaborateur/aaa,bbb,bbb,bbb,Collaborateur/Traited
 test2/test2/aaa,bbb,bbb,bbb,Collaborateur/aaa,bbb,bbb,bbb,Collaborateur/Created

@@ -20,6 +20,13 @@ public class CollabController {
             indexCollab.setVisible(false);
 
         } );
+
+        indexCollab.statistiqueListener(e -> {
+            Statistique Vframe = new Statistique(ConnexionController.currentUser);
+            Vframe.setVisible(true);
+            indexCollab.setVisible(false);
+
+        } );
         
 
 

@@ -1,8 +1,7 @@
 package View;
 
 import javax.swing.*;
-import Controller.AdminController;
-import Controller.CollabController;
+import Controller.*;
 
 import java.awt.*;
 
