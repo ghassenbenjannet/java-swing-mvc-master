@@ -1,3 +1,4 @@
-test/test/aaa,bbb,bbb,bbb,Collaborateur/aaa,bbb,bbb,bbb,Collaborateur/Created
-test2/test2/aaa,bbb,bbb,bbb,Collaborateur/Ghassen,Ben Jannet,admin,admin,Admin/Created
-test2/test2/aaa,bbb,bbb,bbb,Collaborateur/aaa,bbb,bbb,bbb,Collaborateur/Traited
+Notation/Noter le rapport/kais,Klai,kais,collab,Collaborateur/kais,Klai,kais,collab,Collaborateur/Created
+Ajouter un readme/instructions de modification/toto,toto,toto@gmail.com,test,Collaborateur/Alenas,Chaoui,alenas,admin,Admin/Created
+Teste/lancer un test/toto,toto,toto@gmail.com,test,Collaborateur/Ghassen,Ben Jannet,ghassen,admin,Admin/Created
+Test collab/test pour role collab/toto,toto,toto@gmail.com,test,Collaborateur/toto,toto,toto@gmail.com,test,Collaborateur/Created
