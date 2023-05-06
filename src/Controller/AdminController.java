@@ -14,7 +14,12 @@ public class AdminController {
                 
         });
 
+        indexAdmin.gestionTicketsListener(e -> {
 
+                    ViewTickets VFrame = new ViewTickets(ConnexionController.currentUser);
+                    VFrame.setVisible(true);
+                    indexAdmin.setVisible(false);
+        });
 
     }
 }

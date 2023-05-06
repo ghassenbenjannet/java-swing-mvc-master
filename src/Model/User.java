@@ -65,7 +65,7 @@ public abstract class  User {
     }
 
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s", this.firstname, this.lastname, this.email, this.password, this.role == 0 ? "Collaborateur" : "Admin");
+        return String.format("%s,%s,%s,%s,%s", this.firstname, this.lastname, this.email, this.password, this.role == 2 ? "Collaborateur" : "Admin");
     }
 
     public static User fromString(String line) {
@@ -74,7 +74,13 @@ public abstract class  User {
         String lastname = parts[1];
         String email = parts[2];
         String password = parts[3];
-        int role = Integer.parseInt(parts[4]);
+        int role;
+        if(parts[4].equals("Admin")){
+            role = 1;
+        }
+        else{
+            role = 2;
+        }
         
         if (role == 1) {
             return new Admin(firstname, lastname, email, password);
